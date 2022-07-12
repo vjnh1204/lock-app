@@ -1,8 +1,8 @@
 package com.example.applock.fragment
 
 import android.annotation.SuppressLint
-import android.content.Intent
-import android.content.pm.ResolveInfo
+import android.content.pm.ApplicationInfo
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -36,17 +36,9 @@ class ApplicationsFragment : Fragment() {
     private fun getApplications(activity: FragmentActivity?):ArrayList<AppInfo> {
         val listApp = ArrayList<AppInfo>()
         val manager = activity?.packageManager
-        val intent = Intent(Intent.ACTION_MAIN,null)
-        intent.addCategory(Intent.CATEGORY_LAUNCHER)
-
-        val infoApps:ArrayList<ResolveInfo> = manager!!.queryIntentActivities(intent,0) as ArrayList<ResolveInfo>
-        for(infoApp in infoApps){
-            val activityInfo = infoApp.activityInfo
-            if(activityInfo.packageName.equals("com.example.applock")){
-                continue
-            }
-            listApp.add(AppInfo(activityInfo.loadIcon(manager),
-                activityInfo.packageName,activityInfo.loadLabel(manager).toString()))
+        val list:ArrayList<ApplicationInfo> = manager!!.getInstalledApplications(PackageManager.GET_META_DATA) as ArrayList<ApplicationInfo>
+        for(appInfo in list){
+            listApp.add(AppInfo(appInfo.loadIcon(manager),appInfo.packageName,appInfo.loadLabel(manager).toString()))
         }
         return listApp
     }
