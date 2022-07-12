@@ -5,12 +5,13 @@ import android.os.Bundle
 import android.widget.ImageView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.widget.ViewPager2
-import com.example.applock.adapter.FragmentAdapter
+import com.example.applock.adapters.FragmentAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : FragmentActivity() {
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager2
     var tabTitle = arrayOf("Applications","Profiles")
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         viewPager = findViewById(R.id.viewPager2)
         drawerLayout = findViewById(R.id.drawer_layout)
         imgMenu = findViewById(R.id.image_menu)
-        viewPager.adapter = FragmentAdapter(supportFragmentManager,lifecycle)
+        viewPager.adapter = FragmentAdapter(this)
         TabLayoutMediator(tabLayout,viewPager){tab,index ->
             tab.text = tabTitle[index]
         }.attach()
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         imgMenu.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
         }
+
     }
 
 
