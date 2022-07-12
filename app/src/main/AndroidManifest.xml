@@ -4,6 +4,8 @@
     package="com.example.applock">
     <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
         tools:ignore ="ProtectedPermissions"/>
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
     <application
         android:name=".App"
         android:allowBackup="true"

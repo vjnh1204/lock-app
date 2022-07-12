@@ -10,7 +10,9 @@
     >
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorBlue"
+        >
 
         <LinearLayout
             android:id="@+id/ll_action_bar"
@@ -43,13 +45,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/ll_action_bar"
-            app:tabBackground="@color/white"
-            app:tabIndicatorColor="@color/colorButton"
+            app:tabBackground="@drawable/tab_background"
+            app:tabIndicatorColor="@color/colorBlue"
+            app:tabIndicatorAnimationDuration="1500"
+            app:tabRippleColor="@android:color/transparent"
             app:tabSelectedTextColor="@color/colorButton"
             app:tabTextColor="@color/black" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPager2"
+            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/tabLayout"/>

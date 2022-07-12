@@ -4,16 +4,21 @@ import android.annotation.SuppressLint
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.applock.R
 import com.example.applock.adapters.AppsInstallerAdapter
 import com.example.applock.model.AppInfo
+import com.example.applock.utils.Constant
+import java.text.Collator
+import java.util.*
+import kotlin.collections.ArrayList
 
 class ApplicationsFragment : Fragment() {
     private lateinit var recyclerView:RecyclerView
@@ -29,18 +34,8 @@ class ApplicationsFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        val adapter= AppsInstallerAdapter(getApplications(activity),activity)
+        val adapter= AppsInstallerAdapter(Constant.appLi(requireActivity()),activity)
         recyclerView.adapter = adapter
-    }
-    @SuppressLint("QueryPermissionsNeeded")
-    private fun getApplications(activity: FragmentActivity?):ArrayList<AppInfo> {
-        val listApp = ArrayList<AppInfo>()
-        val manager = activity?.packageManager
-        val list:ArrayList<ApplicationInfo> = manager!!.getInstalledApplications(PackageManager.GET_META_DATA) as ArrayList<ApplicationInfo>
-        for(appInfo in list){
-            listApp.add(AppInfo(appInfo.loadIcon(manager),appInfo.packageName,appInfo.loadLabel(manager).toString()))
-        }
-        return listApp
     }
 
 }
