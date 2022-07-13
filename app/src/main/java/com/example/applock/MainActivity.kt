@@ -8,6 +8,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.example.applock.adapters.FragmentAdapter
+import com.example.applock.utils.Constant
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -33,7 +34,6 @@ class MainActivity : FragmentActivity() {
         imgMenu.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
         }
-
     }
 
 

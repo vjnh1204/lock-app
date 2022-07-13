@@ -10,7 +10,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 object Constant {
-    fun appLi(activity:Activity):ArrayList<AppInfo>{
+    fun getApplications(activity:Activity):ArrayList<AppInfo>{
         val listApp = ArrayList<AppInfo>()
         val manager = activity.packageManager
         val list:ArrayList<ApplicationInfo> = manager!!.getInstalledApplications(PackageManager.GET_META_DATA) as ArrayList<ApplicationInfo>
@@ -24,7 +24,6 @@ object Constant {
         Collections.sort(listApp, DNComparator())
         return listApp
     }
-
     class DNComparator : Comparator<AppInfo> {
         override fun compare(o1: AppInfo?, o2: AppInfo?): Int {
             val sa = o1?.appName
@@ -32,6 +31,5 @@ object Constant {
 
             return Collator.getInstance().compare(sa,sb)
         }
-
     }
 }

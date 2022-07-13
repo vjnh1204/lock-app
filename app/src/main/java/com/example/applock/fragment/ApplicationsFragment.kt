@@ -34,7 +34,7 @@ class ApplicationsFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        val adapter= AppsInstallerAdapter(Constant.appLi(requireActivity()),activity)
+        val adapter= AppsInstallerAdapter(Constant.getApplications(requireActivity()),activity)
         recyclerView.adapter = adapter
     }
 
