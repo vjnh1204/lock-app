@@ -17,6 +17,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 
 class MainActivity : FragmentActivity() {
+
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager2
     var tabTitle = arrayOf("Applications","Profiles")
@@ -43,7 +44,9 @@ class MainActivity : FragmentActivity() {
 
 //        val listApp     = Constant.getApplications(this)
         //search active
+
         val searchBtn   = findViewById<ImageView>(R.id.searchBtn)
+
             searchBtn.setOnClickListener{
                 startActivity(Intent(this@MainActivity,SearchAcivity::class.java))
             }

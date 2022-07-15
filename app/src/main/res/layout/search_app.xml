@@ -29,12 +29,10 @@
             android:id="@+id/searchApp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Tìm kiếm......"
             android:textSize="20sp"
+
             android:fontFamily="sans-serif"
-            android:layout_marginLeft="30dp"
             android:textColorHint="@color/white"
-            android:background="@null"
             android:textColor="@color/white"
             />
 

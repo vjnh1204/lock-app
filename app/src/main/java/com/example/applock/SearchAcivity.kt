@@ -14,23 +14,30 @@ import com.example.applock.model.AppInfo
 import com.example.applock.utils.Constant
 
 class SearchAcivity:AppCompatActivity() {
+
+    //global variable
     var recyclerView :RecyclerView ?= null
     private var listApp:ArrayList<AppInfo> ?= null
     private var adapter :AppsInstallerAdapter? =null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.search_app)
+        //back activity from main
         val backView = findViewById<ImageView>(R.id.back)
         backView.setOnClickListener{
             startActivity(Intent(this@SearchAcivity,MainActivity::class.java))
         }
-
+        //get data recyclerview
         recyclerView = findViewById(R.id.recyclerView)
         listApp= Constant.getApplications(this)
         recyclerView?.layoutManager = LinearLayoutManager(this)
-        val searchApp   = findViewById<androidx.appcompat.widget.SearchView>(R.id.searchApp)
         adapter = AppsInstallerAdapter(listApp!!,this)
         recyclerView?.adapter = adapter
+        val searchApp   = findViewById<androidx.appcompat.widget.SearchView>(R.id.searchApp)
+
+
+
 
 
         searchApp.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
@@ -46,6 +53,7 @@ class SearchAcivity:AppCompatActivity() {
 
         })
     }
+
     private fun filterListApp(text: String) {
 
         val listAppNew  = ArrayList<AppInfo>()
@@ -53,14 +61,18 @@ class SearchAcivity:AppCompatActivity() {
 
             if(appInfo.appName.lowercase().contains(text.toLowerCase())){
                 listAppNew.add(appInfo)
-                Log.d("aa",appInfo.appName)
+//                Log.d("aa",appInfo.appName)
             }
-            if(listAppNew.isEmpty()){
-                Toast.makeText(this,"No data found",Toast.LENGTH_SHORT).show()
+            if(listAppNew == null){
+
+                //Toast.makeText(this,"No data found",Toast.LENGTH_SHORT).show()
             }
             else{
+
                 adapter!!.setlistAppNew(listAppNew)
+//                Toast.makeText(this,"No data found",Toast.LENGTH_SHORT).show()
             }
+//            Toast.makeText(this,"No data found",Toast.LENGTH_SHORT).show()
 
         }
 

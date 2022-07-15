@@ -38,6 +38,7 @@ class AppsInstallerAdapter(var items:ArrayList<AppInfo>, mContext: FragmentActiv
 
     // function get listappNew
     fun setlistAppNew(listAppNew: ArrayList<AppInfo>){
+
         this.items = listAppNew
         notifyDataSetChanged()
     }
