@@ -1,20 +1,14 @@
 package com.example.applock.fragment
 
-import android.annotation.SuppressLint
-import android.content.pm.ApplicationInfo
-import android.content.pm.PackageManager
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.applock.R
 import com.example.applock.adapters.AppsInstallerAdapter
-import com.example.applock.model.AppInfo
 import com.example.applock.utils.Constant
 import java.text.Collator
 import java.util.*
@@ -34,9 +28,9 @@ class ApplicationsFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        val adapter= AppsInstallerAdapter(Constant.getApplications(requireActivity()),activity)
+        val adapter=
+            context?.let { AppsInstallerAdapter(Constant.getApplications(requireActivity()), it) }
         recyclerView.adapter = adapter
     }
-
 }
 
