@@ -15,7 +15,7 @@
 
         <com.shuhart.stepview.StepView
             android:id="@+id/step_view"
-            android:layout_width="209dp"
+            android:layout_width="206dp"
             android:layout_height="wrap_content"
             app:sv_animationType="All"
             app:sv_stepPadding="12dp"
@@ -68,4 +68,5 @@
             android:layout_width="250dp"
             android:layout_height="300dp" />
     </LinearLayout>
+
 </RelativeLayout>

@@ -1,8 +1,11 @@
 package com.example.applock
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.SearchView
 import android.widget.Toast
@@ -34,12 +37,8 @@ class SearchAcivity:AppCompatActivity() {
         recyclerView?.layoutManager = LinearLayoutManager(this)
         adapter = AppsInstallerAdapter(listApp!!,this)
         recyclerView?.adapter = adapter
+        //Logic searchApp
         val searchApp   = findViewById<androidx.appcompat.widget.SearchView>(R.id.searchApp)
-
-
-
-
-
         searchApp.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
@@ -64,15 +63,11 @@ class SearchAcivity:AppCompatActivity() {
 //                Log.d("aa",appInfo.appName)
             }
             if(listAppNew == null){
-
-                //Toast.makeText(this,"No data found",Toast.LENGTH_SHORT).show()
             }
             else{
-
                 adapter!!.setlistAppNew(listAppNew)
-//                Toast.makeText(this,"No data found",Toast.LENGTH_SHORT).show()
             }
-//            Toast.makeText(this,"No data found",Toast.LENGTH_SHORT).show()
+
 
         }
 

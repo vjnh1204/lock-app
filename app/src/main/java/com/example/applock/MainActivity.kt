@@ -1,10 +1,17 @@
 package com.example.applock
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.WindowManager
+import android.view.inputmethod.InputMethod
+import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.SearchView
+import android.widget.Switch
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.SwitchCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentActivity
@@ -18,12 +25,21 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : FragmentActivity() {
 
+
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager2
-    var tabTitle = arrayOf("Applications","Profiles")
+    var tabTitle = arrayOf("Applications", "Profiles")
     private lateinit var drawerLayout: DrawerLayout
-    private lateinit var imgMenu:ImageView
+    private lateinit var imgMenu: ImageView
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO){
+            setTheme(R.style.Theme_AppLock)
+        }else{
+            setTheme(R.style.Theme_AppLock_Dark )
+        }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -31,52 +47,34 @@ class MainActivity : FragmentActivity() {
         viewPager = findViewById(R.id.viewPager2)
         drawerLayout = findViewById(R.id.drawer_layout)
         imgMenu = findViewById(R.id.image_menu)
+
+
         viewPager.adapter = FragmentAdapter(this)
-        TabLayoutMediator(tabLayout,viewPager){tab,index ->
+        TabLayoutMediator(tabLayout, viewPager) { tab, index ->
             tab.text = tabTitle[index]
         }.attach()
 
         imgMenu.setOnClickListener {
-
             drawerLayout.openDrawer(GravityCompat.START)
+        }
+        //        logical code processing
 
+        //active Main->searchActivity
+        val searchBtn = findViewById<ImageView>(R.id.searchBtn)
+        searchBtn.setOnClickListener {
+            startActivity(Intent(this@MainActivity, SearchAcivity::class.java))
         }
 
-//        val listApp     = Constant.getApplications(this)
-        //search active
 
-        val searchBtn   = findViewById<ImageView>(R.id.searchBtn)
 
-            searchBtn.setOnClickListener{
-                startActivity(Intent(this@MainActivity,SearchAcivity::class.java))
-            }
-//
-//        val searchApp = findViewById<androidx.appcompat.widget.SearchView>(R.id.search)
-//        val listAppNew = ArrayList<AppInfo>()
-//        searchApp.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
-//            androidx.appcompat.widget.SearchView.OnQueryTextListener {
-//            override fun onQueryTextSubmit(query: String): Boolean {
-//                return true
-//            }
-//
-//            override fun onQueryTextChange(newText: String): Boolean {
-//                listAppNew.clear()
-//                for (appInfo in listApp){
-//                    if (appInfo.appName.lowercase().contains(newText) or appInfo.appName.uppercase().contains(newText)){
-//                        listAppNew.add(appInfo)
-//                        Log.d("aa",appInfo.appName)
-//
-//                    }
-//                }
-//                return true
-//            }
-
-//        })
-
-    }
 
 
 
 
     }
+}
+
+
+
+
 
