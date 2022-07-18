@@ -1,5 +1,6 @@
 package com.example.applock
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatDelegate
@@ -14,7 +15,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : FragmentActivity() {
 
-
+    private  var sharedPreferences:SharedPreferences?=null
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager2
     private var tabTitle = arrayOf("Applications", "Profiles")
@@ -23,6 +24,7 @@ class MainActivity : FragmentActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
 
         if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO){
             setTheme(R.style.Theme_AppLock)
@@ -46,12 +48,10 @@ class MainActivity : FragmentActivity() {
         imgMenu.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
         }
-        //        logical code processing
 
-        //active Main->searchActivity
         val searchBtn = findViewById<ImageView>(R.id.searchBtn)
         searchBtn.setOnClickListener {
-            startActivity(Intent(this@MainActivity, SearchAcivity::class.java))
+            startActivity(Intent(this@MainActivity, SearchActivity::class.java))
         }
 
     }

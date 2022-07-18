@@ -5,17 +5,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-
 import androidx.recyclerview.widget.RecyclerView
 import com.example.applock.R
 import com.example.applock.model.AppInfo
 
-class AppsInstallerAdapter(var items: ArrayList<AppInfo>) : RecyclerView.Adapter<AppsInstallerAdapter.ViewHolder>() {
+class AppsInstallerAdapter(private var items: ArrayList<AppInfo>) : RecyclerView.Adapter<AppsInstallerAdapter.ViewHolder>() {
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         //Holder view
         val ivAppIcon:ImageView = view.findViewById(R.id.iv_icon_app)
         val tvAppName:TextView = view.findViewById(R.id.tv_app_name)
-        val ivAppLock:ImageView = view.findViewById(R.id.iv_lock_app)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -32,7 +30,7 @@ class AppsInstallerAdapter(var items: ArrayList<AppInfo>) : RecyclerView.Adapter
         return items.size
     }
 
-    // function get listappNew
+    // function get listsNew
     @SuppressLint("NotifyDataSetChanged")
     fun setlistAppNew(listAppNew: ArrayList<AppInfo>){
 

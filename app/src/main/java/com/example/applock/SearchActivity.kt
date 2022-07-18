@@ -13,7 +13,7 @@ import com.example.applock.utils.Constant
 import java.util.*
 import kotlin.collections.ArrayList
 
-class SearchAcivity:AppCompatActivity() {
+class SearchActivity:AppCompatActivity() {
 
     //global variable
     private var recyclerView :RecyclerView ?= null
@@ -23,10 +23,10 @@ class SearchAcivity:AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.search_app)
-        //back activity from main
+
         val backView = findViewById<ImageView>(R.id.back)
         backView.setOnClickListener{
-            startActivity(Intent(this@SearchAcivity,MainActivity::class.java))
+            startActivity(Intent(this@SearchActivity,MainActivity::class.java))
         }
         //get data recyclerview
         recyclerView = findViewById(R.id.recyclerView)
@@ -54,10 +54,8 @@ class SearchAcivity:AppCompatActivity() {
 
         val listAppNew  = ArrayList<AppInfo>()
         for(appInfo in listApp!!){
-
             if(appInfo.appName.lowercase().contains(text.lowercase(Locale.getDefault()))){
                 listAppNew.add(appInfo)
-//                Log.d("aa",appInfo.appName)
             }
             adapter!!.setlistAppNew(listAppNew)
 
