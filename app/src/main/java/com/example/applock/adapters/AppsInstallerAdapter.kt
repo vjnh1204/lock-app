@@ -1,20 +1,16 @@
 package com.example.applock.adapters
-
-import android.app.Activity
-import android.content.Context
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.SearchView
 import android.widget.TextView
-import androidx.fragment.app.FragmentActivity
+
 import androidx.recyclerview.widget.RecyclerView
-import com.example.applock.App
 import com.example.applock.R
 import com.example.applock.model.AppInfo
 
-class AppsInstallerAdapter(var items:ArrayList<AppInfo>, mContext: FragmentActivity?) : RecyclerView.Adapter<AppsInstallerAdapter.ViewHolder>() {
+class AppsInstallerAdapter(var items: ArrayList<AppInfo>) : RecyclerView.Adapter<AppsInstallerAdapter.ViewHolder>() {
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         //Holder view
         val ivAppIcon:ImageView = view.findViewById(R.id.iv_icon_app)
@@ -37,6 +33,7 @@ class AppsInstallerAdapter(var items:ArrayList<AppInfo>, mContext: FragmentActiv
     }
 
     // function get listappNew
+    @SuppressLint("NotifyDataSetChanged")
     fun setlistAppNew(listAppNew: ArrayList<AppInfo>){
 
         this.items = listAppNew

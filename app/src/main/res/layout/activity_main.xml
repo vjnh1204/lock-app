@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,11 +20,13 @@
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <ImageView
                     android:id="@+id/image_menu"
-                    android:layout_width="30dp"
+                    android:layout_width="25dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/menu"
+                    android:src="@drawable/menu_bar"
+                    app:tint="@color/white"
                     android:layout_marginEnd="15dp"
                     />
                 <TextView
@@ -47,16 +49,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginEnd="20dp"
                         android:src="@drawable/search"
                         android:textSize="18sp" />
 
                 </RelativeLayout>
 
             </androidx.appcompat.widget.Toolbar>
-
-
-
         </LinearLayout>
 
         <com.google.android.material.tabs.TabLayout

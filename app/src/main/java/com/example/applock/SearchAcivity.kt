@@ -1,25 +1,22 @@
 package com.example.applock
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.WindowManager
-import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.applock.adapters.AppsInstallerAdapter
 import com.example.applock.model.AppInfo
 import com.example.applock.utils.Constant
+import java.util.*
+import kotlin.collections.ArrayList
 
 class SearchAcivity:AppCompatActivity() {
 
     //global variable
-    var recyclerView :RecyclerView ?= null
+    private var recyclerView :RecyclerView ?= null
     private var listApp:ArrayList<AppInfo> ?= null
     private var adapter :AppsInstallerAdapter? =null
 
@@ -35,7 +32,7 @@ class SearchAcivity:AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
         listApp= Constant.getApplications(this)
         recyclerView?.layoutManager = LinearLayoutManager(this)
-        adapter = AppsInstallerAdapter(listApp!!,this)
+        adapter = AppsInstallerAdapter(listApp!!)
         recyclerView?.adapter = adapter
         //Logic searchApp
         val searchApp   = findViewById<androidx.appcompat.widget.SearchView>(R.id.searchApp)
@@ -46,7 +43,7 @@ class SearchAcivity:AppCompatActivity() {
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
-                    filterListApp(newText) // call function ListApNew
+                    filterListApp(newText)
                 return true
             }
 
@@ -58,15 +55,11 @@ class SearchAcivity:AppCompatActivity() {
         val listAppNew  = ArrayList<AppInfo>()
         for(appInfo in listApp!!){
 
-            if(appInfo.appName.lowercase().contains(text.toLowerCase())){
+            if(appInfo.appName.lowercase().contains(text.lowercase(Locale.getDefault()))){
                 listAppNew.add(appInfo)
 //                Log.d("aa",appInfo.appName)
             }
-            if(listAppNew == null){
-            }
-            else{
-                adapter!!.setlistAppNew(listAppNew)
-            }
+            adapter!!.setlistAppNew(listAppNew)
 
 
         }

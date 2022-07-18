@@ -1,24 +1,13 @@
 package com.example.applock
-
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.WindowManager
-import android.view.inputmethod.InputMethod
-import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
-import android.widget.SearchView
-import android.widget.Switch
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.widget.SwitchCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.example.applock.adapters.FragmentAdapter
-import com.example.applock.model.AppInfo
-import com.example.applock.utils.Constant
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -28,7 +17,7 @@ class MainActivity : FragmentActivity() {
 
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager2
-    var tabTitle = arrayOf("Applications", "Profiles")
+    private var tabTitle = arrayOf("Applications", "Profiles")
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var imgMenu: ImageView
 
@@ -65,13 +54,9 @@ class MainActivity : FragmentActivity() {
             startActivity(Intent(this@MainActivity, SearchAcivity::class.java))
         }
 
-
-
-
-
-
-
     }
+
+
 }
 
 

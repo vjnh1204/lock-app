@@ -24,8 +24,8 @@ class FirstActivity : AppCompatActivity() {
     private var imageSettingPermission: ImageView?= null
     private var btnStart: Button?= null
     private var sharedPreferences: SharedPreferences?= null
-    var checkButtonCreateClick: Boolean = false
-    var checkButtonPermissionClick: Boolean = false
+    private var checkButtonCreateClick: Boolean = false
+    private var checkButtonPermissionClick: Boolean = false
     private var patternLockActivityLauncher : ActivityResultLauncher<Intent> = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()) { result ->
         if(result.resultCode == Activity.RESULT_OK){
@@ -111,4 +111,5 @@ class FirstActivity : AppCompatActivity() {
         showBtnStart()
         super.onResume()
     }
+
 }

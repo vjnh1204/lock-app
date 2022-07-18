@@ -3,7 +3,7 @@ package com.example.applock
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Color
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -27,7 +27,7 @@ class PatternLockActivity : AppCompatActivity() {
         initPatternListener()
     }
     private fun initPatternListener(){
-        var patternLockView: PatternLockView = findViewById(R.id.pattern_view)
+        val patternLockView: PatternLockView = findViewById(R.id.pattern_view)
         patternLockView.setOnPatternListener(object :PatternLockView.OnPatternListener {
             override fun onComplete(ids: ArrayList<Int>): Boolean {
                 var password = ""
