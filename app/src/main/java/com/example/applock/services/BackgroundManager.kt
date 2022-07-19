@@ -12,14 +12,15 @@ import com.example.applock.receiver.RestartServiceWhenStopped
 class BackgroundManager {
     private var context:Context?= null
     companion object{
-        private const val period = 100
+        private const val period = 5000
         private const val ALARM_ID = 159784
         @SuppressLint("StaticFieldLeak")
         private var instance:BackgroundManager?= null
         fun getInstance():BackgroundManager?{
-            if(instance == null)
+            return if(instance == null){
                 instance = BackgroundManager()
-            return instance
+                instance
+            } else instance
         }
     }
     fun init(context: Context):BackgroundManager{
@@ -38,9 +39,10 @@ class BackgroundManager {
     }
     fun startService(){
         if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
-            if(!isServiceRunning(ServiceAppLockJObIntent::class.java)){
-                val intent= Intent(context,ServiceAppLockJObIntent::class.java)
-                ServiceAppLockJObIntent.enqueueWork(context!!,intent)
+            if(!isServiceRunning(ServiceAppLock::class.java)){
+//                val intent= Intent(context,ServiceAppLockJObIntent::class.java)
+//                ServiceAppLockJObIntent.enqueueWork(context,intent)
+                context!!.startForegroundService(Intent(context,ServiceAppLock::class.java))
             }
         }
         else{
@@ -60,8 +62,9 @@ class BackgroundManager {
         intent.putExtra("type","startLockServiceFromAM")
         val pendingIntent = PendingIntent.getBroadcast(context, ALARM_ID,intent,PendingIntent.FLAG_UPDATE_CURRENT)
         val alarmManager = context?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        alarmManager.set(AlarmManager.RTC_WAKEUP,System.currentTimeMillis() + period,pendingIntent)
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP,System.currentTimeMillis() + period,pendingIntent)
     }
+    @SuppressLint("UnspecifiedImmutableFlag")
     fun stopAlarmManager(){
         val intent = Intent(context,RestartServiceWhenStopped::class.java)
         intent.putExtra("type","startLockServiceFromAM")

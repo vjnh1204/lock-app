@@ -26,12 +26,13 @@ class PatternLockActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pattern_lock)
+
         BackgroundManager.getInstance()!!.init(this).startService()
         initLayout()
         initPatternListener()
     }
     private fun initPatternListener(){
-        var patternLockView: PatternLockView = findViewById(R.id.pattern_view)
+        val patternLockView: PatternLockView = findViewById(R.id.pattern_view)
         patternLockView.setOnPatternListener(object :PatternLockView.OnPatternListener {
             override fun onComplete(ids: ArrayList<Int>): Boolean {
                 var password = ""
@@ -65,7 +66,6 @@ class PatternLockActivity : AppCompatActivity() {
                 else{
                     if (PassPattern.isCorrect(password)){
                         statusPassword?.text= PassPattern.STATUS_PASSWORD_CORRECT
-
                         startMain()
                     }
                     else{
@@ -84,7 +84,7 @@ class PatternLockActivity : AppCompatActivity() {
         finish()
     }
     private fun startMain(){
-        if(intent.getStringExtra("broadcast_receiver")== null){
+        if(intent.getStringExtra("broadcast_receiver") == null){
             startActivity(Intent(this,MainActivity::class.java))
         }
         finish()
@@ -120,13 +120,18 @@ class PatternLockActivity : AppCompatActivity() {
         }
     }
 
+    override fun onDestroy() {
+        BackgroundManager.getInstance()!!.init(this).startService()
+        BackgroundManager.getInstance()!!.init(this).startAlarmManager()
+        super.onDestroy()
+    }
     private fun startCurrentHomePackage() {
         val intent =Intent(Intent.ACTION_MAIN)
         intent.addCategory(Intent.CATEGORY_HOME)
         val resolveInfo= packageManager.resolveActivity(intent,PackageManager.MATCH_DEFAULT_ONLY)
         val activityInfo = resolveInfo?.activityInfo
         val componentName = ComponentName(activityInfo?.applicationInfo!!.packageName,activityInfo.name)
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
         Utils(this).clearLastApp()
     }

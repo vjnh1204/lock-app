@@ -9,6 +9,8 @@
     <!--suppress DeprecatedClassUsageInspection -->
     <uses-permission android:name="android.permission.GET_TASKS"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -33,18 +35,29 @@
         </activity>
         <activity
             android:name=".PatternLockActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:label=""
+            android:launchMode="singleTask"
+            android:noHistory="true"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="false"/>
         <receiver android:name=".receiver.ReceiverAppLock"
             android:exported="true"
             android:enabled="true">
+
         </receiver>
         <receiver android:name=".receiver.RestartServiceWhenStopped"
             android:enabled="true"
             android:exported="true"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED"
             >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </receiver>
         <receiver android:name=".receiver.BootUpReceiver"
             android:enabled="true"
@@ -57,8 +70,10 @@
         </receiver>
         <service android:name=".services.ServiceAppLock"
             android:exported="false"
-            android:enabled="true"/>
+            android:enabled="true"
+            />
         <service android:name=".services.ServiceAppLockJObIntent"
+            android:enabled="true"
             android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE"/>
     </application>

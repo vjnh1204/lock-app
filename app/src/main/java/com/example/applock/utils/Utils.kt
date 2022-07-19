@@ -51,17 +51,16 @@ class Utils(context: Context) {
         }
     }
     @Suppress("DEPRECATION")
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP_MR1)
     fun getLauncherTopApp():String{
         val usageStatsManager:UsageStatsManager = context!!.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
         val endTime = System.currentTimeMillis()
-        val beginTime = System.currentTimeMillis() -10000
+        val beginTime = System.currentTimeMillis() - 10000
         var result = ""
         val event = UsageEvents.Event()
         val usageEvents = usageStatsManager.queryEvents(beginTime,endTime)
         while (usageEvents.hasNextEvent()){
             usageEvents.getNextEvent(event)
-            if(event.eventType== UsageEvents.Event.MOVE_TO_FOREGROUND){
+            if(event.eventType== UsageEvents.Event.ACTIVITY_RESUMED){
                 result=event.packageName
             }
         }

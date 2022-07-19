@@ -3,7 +3,6 @@ package com.example.applock.utils
 import android.app.Activity
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
-import com.example.applock.fragment.ApplicationsFragment
 import com.example.applock.model.AppInfo
 import java.text.Collator
 import java.util.*
@@ -18,7 +17,6 @@ object Constant {
             if(manager.getLaunchIntentForPackage(appInfo.packageName) != null && (activity.packageName != appInfo.packageName)) {
                 listApp.add(AppInfo(appInfo.loadIcon(manager),appInfo.packageName,appInfo.loadLabel(manager).toString()))
             }
-
         }
         //Sort app
         Collections.sort(listApp, DNComparator())

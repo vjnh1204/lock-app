@@ -10,9 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.applock.R
 import com.example.applock.adapters.AppsInstallerAdapter
 import com.example.applock.utils.Constant
-import java.text.Collator
-import java.util.*
-import kotlin.collections.ArrayList
 
 class ApplicationsFragment : Fragment() {
     private lateinit var recyclerView:RecyclerView

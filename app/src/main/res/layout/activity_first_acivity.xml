@@ -124,6 +124,54 @@
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            app:cardCornerRadius="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bước ba"
+                    android:textAllCaps="true"
+                    android:textStyle="bold"
+                    android:textSize="24sp"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Khóa ứng dụng yêu cầu quyền truy cập sử dụng. Bạn có thể bật tính năng này trong cài đặt hệ thống"
+                    android:layout_marginTop="9dp"
+                    android:textSize="16sp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="16dp">
+                    <Button
+                        android:id="@+id/btn_orverlay_permission"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:text="Đi đến cài đặt"
+                        android:backgroundTint="@color/colorButton"/>
+                    <ImageView
+                        android:id="@+id/image_overlay_permission"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/tick_done"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="40dp"
+                        app:tint="@color/colorGray"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
 
     <Button
@@ -132,9 +180,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="5dp"
         android:backgroundTint="@color/colorButton"
         android:text="Hãy Bắt đầu" />
 </RelativeLayout>
