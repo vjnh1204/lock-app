@@ -18,6 +18,7 @@ class AppsInstallerAdapter(
         ) : RecyclerView.Adapter<AppsInstallerAdapter.ViewHolder>() {
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         //Holder view
+
         val ivAppIcon:ImageView = view.findViewById(R.id.iv_icon_app)
         val tvAppName:TextView = view.findViewById(R.id.tv_app_name)
         val ivAppLock:ImageView = view.findViewById(R.id.iv_lock_app)

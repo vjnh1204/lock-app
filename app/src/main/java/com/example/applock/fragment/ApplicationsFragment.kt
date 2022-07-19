@@ -1,5 +1,8 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.applock.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,14 +23,15 @@ class ApplicationsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_applications, container, false)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(activity)
         val adapter=
             context?.let { AppsInstallerAdapter(Constant.getApplications(requireActivity()), it) }
         recyclerView.adapter = adapter
+        adapter!!.notifyDataSetChanged()
     }
 }
 

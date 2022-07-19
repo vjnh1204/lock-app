@@ -80,239 +80,293 @@
                 android:layout_height="match_parent"
                 android:layout_below="@id/nav_header"
                 android:layout_margin="16dp"
-                android:orientation="vertical"
-                android:background="@color/colorBlue">
+                android:background="@color/colorBlue"
+                android:orientation="vertical">
 
-                <androidx.cardview.widget.CardView
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp">
-
+                    android:layout_height="wrap_content">
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="10dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="30dp"
-                            android:src="@drawable/lock" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="3"
-                            android:gravity="center|left"
-                            android:text="Chủ đề" />
-
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:src="@drawable/right_arrow"
-                            app:tint="@color/colorBlue" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp">
-
-                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/change_lock_view"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="10dp"
-                        android:orientation="horizontal">
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
 
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="30dp"
-                            android:src="@drawable/lock" />
-
-                        <TextView
-                            android:layout_width="0dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="3"
-                            android:gravity="center|left"
-                            android:text="Chế độ tối" />
+                            android:layout_margin="10dp"
+                            android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:src="@drawable/right_arrow"
-                            app:tint="@color/colorBlue" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp">
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/lock" />
 
-                    <LinearLayout
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="3"
+                                android:gravity="center|left"
+                                android:text="Chủ đề" />
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/right_arrow"
+                                app:tint="@color/colorBlue" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/change_theme"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="10dp"
-                        android:orientation="horizontal">
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
 
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="30dp"
-                            android:src="@drawable/lock" />
-
-                        <TextView
-                            android:layout_width="0dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="3"
-                            android:gravity="center|left"
-                            android:text="Hình nền khóa"
-                            tools:ignore="RtlHardcoded" />
+                            android:layout_margin="10dp"
+                            android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:src="@drawable/right_arrow"
-                            app:tint="@color/colorBlue" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp">
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/lock" />
 
-                    <LinearLayout
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="3"
+                                android:gravity="center|left"
+                                android:text="Chế độ tối" />
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/right_arrow"
+                                app:tint="@color/colorBlue" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/change_background_lock"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="10dp"
-                        android:orientation="horizontal">
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
 
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="30dp"
-                            android:src="@drawable/lock" />
-
-                        <TextView
-                            android:layout_width="0dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="3"
-                            android:gravity="center|left"
-                            android:text="Đổi mật khẩu" />
+                            android:layout_margin="10dp"
+                            android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:src="@drawable/right_arrow"
-                            app:tint="@color/colorBlue" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp">
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/lock" />
 
-                    <LinearLayout
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="3"
+                                android:gravity="center|left"
+                                android:text="Hình nền khóa"
+                                tools:ignore="RtlHardcoded" />
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/right_arrow"
+                                app:tint="@color/colorBlue" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/change_pass"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="10dp"
-                        android:orientation="horizontal">
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
 
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="30dp"
-                            android:src="@drawable/lock" />
-
-                        <TextView
-                            android:layout_width="0dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="3"
-                            android:gravity="center|left"
-                            android:text="Chính sách bảo mật" />
+                            android:layout_margin="10dp"
+                            android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:src="@drawable/right_arrow"
-                            app:tint="@color/colorBlue" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp">
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/lock" />
 
-                    <LinearLayout
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="3"
+                                android:gravity="center|left"
+                                android:text="Đổi mật khẩu" />
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/right_arrow"
+                                app:tint="@color/colorBlue" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="10dp"
-                        android:orientation="horizontal">
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
 
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="30dp"
-                            android:src="@drawable/lock" />
-
-                        <TextView
-                            android:layout_width="0dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="3"
-                            android:gravity="center|left"
-                            android:text="Đổi ngôn ngữ" />
+                            android:layout_margin="10dp"
+                            android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:src="@drawable/right_arrow"
-                            app:tint="@color/colorBlue" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp">
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/lock" />
 
-                    <LinearLayout
+                            <TextView
+                                android:id="@+id/policy"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="3"
+                                android:gravity="center|left"
+                                android:text="Chính sách bảo mật" />
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/right_arrow"
+                                app:tint="@color/colorBlue" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/change_language"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="10dp"
-                        android:orientation="horizontal">
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
 
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="30dp"
-                            android:src="@drawable/lock" />
-
-                        <TextView
-                            android:layout_width="0dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="3"
-                            android:gravity="center|left"
-                            android:text="Chia sẻ app" />
+                            android:layout_margin="10dp"
+                            android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:src="@drawable/right_arrow"
-                            app:tint="@color/colorBlue" />
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/lock" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="3"
+                                android:gravity="center|left"
+                                android:text="Đổi ngôn ngữ" />
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/right_arrow"
+                                app:tint="@color/colorBlue" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/share_app"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="10dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/lock" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="3"
+                                android:gravity="center|left"
+                                android:text="Chia sẻ app" />
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/right_arrow"
+                                app:tint="@color/colorBlue" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/rate_app"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="10dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/lock" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="3"
+                                android:gravity="center|left"
+                                android:text="Đánh giá app" />
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/right_arrow"
+                                app:tint="@color/colorBlue" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                </ScrollView>
             </LinearLayout>
         </RelativeLayout>
     </com.google.android.material.navigation.NavigationView>
-
-
 </androidx.drawerlayout.widget.DrawerLayout>
 
 

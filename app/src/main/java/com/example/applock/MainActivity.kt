@@ -19,7 +19,6 @@ class MainActivity : FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         tabLayout = findViewById(R.id.tabLayout)
         viewPager = findViewById(R.id.viewPager2)
         drawerLayout = findViewById(R.id.drawer_layout)
@@ -28,7 +27,6 @@ class MainActivity : FragmentActivity() {
         TabLayoutMediator(tabLayout,viewPager){tab,index ->
             tab.text = tabTitle[index]
         }.attach()
-
         imgMenu.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
         }

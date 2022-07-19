@@ -26,7 +26,6 @@ class PatternLockActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pattern_lock)
-
         BackgroundManager.getInstance()!!.init(this).startService()
         initLayout()
         initPatternListener()
@@ -120,11 +119,6 @@ class PatternLockActivity : AppCompatActivity() {
         }
     }
 
-    override fun onDestroy() {
-        BackgroundManager.getInstance()!!.init(this).startService()
-        BackgroundManager.getInstance()!!.init(this).startAlarmManager()
-        super.onDestroy()
-    }
     private fun startCurrentHomePackage() {
         val intent =Intent(Intent.ACTION_MAIN)
         intent.addCategory(Intent.CATEGORY_HOME)

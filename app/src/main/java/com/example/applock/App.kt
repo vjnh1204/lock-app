@@ -10,8 +10,6 @@ class App: Application() {
         super.onCreate()
         Paper.init(this)
         instance= this
-        BackgroundManager.getInstance()!!.init(this).startService()
-        BackgroundManager.getInstance()!!.init(this).startAlarmManager()
     }
     fun setHaveCode(passwordKey: String){
         val pref = getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit()
@@ -26,7 +24,5 @@ class App: Application() {
         var instance: App? = null
         const val PREFS: String = "SHARED_PREFS"
         const val HAVE_PASSWORD: String = "HAVE_PASSWORD"
-
     }
-
 }

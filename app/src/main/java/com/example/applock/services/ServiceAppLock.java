@@ -70,7 +70,7 @@ public class ServiceAppLock extends IntentService {
                 .setFullScreenIntent(pendingIntent,true);
 
         startForeground(NOTIF_ID,mBuilder.build());
-        BackgroundManager.Companion.getInstance().init(this).startService();
+//        BackgroundManager.Companion.getInstance().init(this).startService();
     }
     @Override
     public int onStartCommand(@Nullable Intent intent, int flags, int startId) {
