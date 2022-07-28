@@ -60,7 +60,7 @@ class Utils(context: Context) {
         val usageEvents = usageStatsManager.queryEvents(beginTime,endTime)
         while (usageEvents.hasNextEvent()){
             usageEvents.getNextEvent(event)
-            if(event.eventType== UsageEvents.Event.ACTIVITY_RESUMED){
+            if(event.eventType== UsageEvents.Event.MOVE_TO_FOREGROUND){
                 result=event.packageName
             }
         }

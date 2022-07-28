@@ -54,7 +54,7 @@ public class ServiceAppLock extends IntentService {
         Intent notificationIntent = new Intent(this, PatternLockActivity.class);
         notificationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 112,
-                notificationIntent, PendingIntent.FLAG_ONE_SHOT);
+                notificationIntent, PendingIntent.FLAG_ONE_SHOT | PendingIntent.FLAG_IMMUTABLE);
         NotificationChannel channel = new NotificationChannel(NOTIF_CHANNEL_ID,"App lock background task", NotificationManager.IMPORTANCE_HIGH);
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         manager.createNotificationChannel(channel);
@@ -67,7 +67,7 @@ public class ServiceAppLock extends IntentService {
                 .setPriority(Notification.PRIORITY_HIGH)
                 .setCategory(Notification.CATEGORY_SERVICE)
                 .setTimeoutAfter(1000)
-                .setFullScreenIntent(pendingIntent,true);
+                .setContentIntent(pendingIntent);
 
         startForeground(NOTIF_ID,mBuilder.build());
 //        BackgroundManager.Companion.getInstance().init(this).startService();

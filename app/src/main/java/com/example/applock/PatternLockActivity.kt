@@ -26,6 +26,10 @@ class PatternLockActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pattern_lock)
+        if(App.instance?.getLockStyle().equals("pin")){
+            startActivity(Intent(this,PinLockActivity::class.java))
+            finish()
+        }
         BackgroundManager.getInstance()!!.init(this).startService()
         initLayout()
         initPatternListener()

@@ -2,18 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.applock">
-    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
-        tools:ignore ="ProtectedPermissions"/>
-    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
         tools:ignore="QueryAllPackagesPermission" />
     <!--suppress DeprecatedClassUsageInspection -->
-    <uses-permission android:name="android.permission.GET_TASKS"/>
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -26,51 +30,63 @@
         android:theme="@style/Theme.AppLock"
         tools:targetApi="31">
         <activity
+            android:name=".ChangePincodeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PinLockActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChangePatternPassActivity"
+            android:exported="false" />
+        <activity
             android:name=".FirstActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".PatternLockActivity"
-            android:exported="false"
             android:excludeFromRecents="true"
+            android:exported="false"
             android:label=""
             android:launchMode="singleTask"
-            android:noHistory="true"/>
-
+            android:noHistory="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="false"/>
-        <receiver android:name=".receiver.ReceiverAppLock"
-            android:exported="true"
-            android:enabled="true">
+            android:exported="false" />
 
-        </receiver>
-        <receiver android:name=".receiver.RestartServiceWhenStopped"
+        <receiver
+            android:name=".receiver.ReceiverAppLock"
             android:enabled="true"
-            android:exported="true"
-            >
-        </receiver>
-        <receiver android:name=".receiver.BootUpReceiver"
+            android:exported="true" />
+        <receiver
+            android:name=".receiver.RestartServiceWhenStopped"
+            android:enabled="true"
+            android:exported="true" />
+        <receiver
+            android:name=".receiver.BootUpReceiver"
             android:enabled="true"
             android:exported="true"
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </receiver>
-        <service android:name=".services.ServiceAppLock"
-            android:exported="false"
+
+        <service
+            android:name=".services.ServiceAppLock"
             android:enabled="true"
-            />
-        <service android:name=".services.ServiceAppLockJObIntent"
+            android:exported="false" />
+        <service
+            android:name=".services.ServiceAppLockJObIntent"
             android:enabled="true"
             android:exported="true"
-            android:permission="android.permission.BIND_JOB_SERVICE"/>
+            android:permission="android.permission.BIND_JOB_SERVICE" />
     </application>
 
 </manifest>

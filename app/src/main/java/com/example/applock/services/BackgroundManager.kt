@@ -60,7 +60,8 @@ class BackgroundManager {
     fun startAlarmManager(){
         val intent = Intent(context, RestartServiceWhenStopped::class.java)
         intent.putExtra("type","startLockServiceFromAM")
-        val pendingIntent = PendingIntent.getBroadcast(context, ALARM_ID,intent,PendingIntent.FLAG_UPDATE_CURRENT)
+        var pendingIntent =
+            PendingIntent.getBroadcast(context, ALARM_ID,intent, PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
         val alarmManager = context?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         alarmManager.setExact(AlarmManager.RTC_WAKEUP,System.currentTimeMillis() + period,pendingIntent)
     }
@@ -68,7 +69,7 @@ class BackgroundManager {
     fun stopAlarmManager(){
         val intent = Intent(context,RestartServiceWhenStopped::class.java)
         intent.putExtra("type","startLockServiceFromAM")
-        val pendingIntent = PendingIntent.getBroadcast(context, ALARM_ID,intent,PendingIntent.FLAG_UPDATE_CURRENT)
+        val pendingIntent = PendingIntent.getBroadcast(context, ALARM_ID,intent,PendingIntent.FLAG_MUTABLE)
         val alarmManager = context?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         alarmManager.cancel(pendingIntent)
     }

@@ -12,6 +12,5 @@ class BootUpReceiver: BroadcastReceiver() {
         context?.let { BackgroundManager.getInstance()!!.init(it).startService()
             BackgroundManager.getInstance()!!.init(it).startAlarmManager()
         }
-
     }
 }
