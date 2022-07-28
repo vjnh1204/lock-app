@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Khóa ứng dụng</string>
+    <string name="app_lock">Khóa Ứng dụng</string>
+    <string name="first_step">Bước một</string>
+    <string name="detail_first_step">Tạo mật khẩu để nhập khi mở các ứng dụng bị khóa</string>
+    <string name="create_pass">Tạo mật khẩu</string>
+    <string name="second_step">Bước hai</string>
+    <string name="detail_second_step">Khóa ứng dụng yêu cầu quyền truy cập sử dụng. Bạn có thể bật tính năng này trong cài đặt hệ thống</string>
+    <string name="go_setting">Đi đến cài đặt</string>
+    <string name="third_step">Bước ba</string>
+    <string name="detail_third_step">Khóa ứng dụng yêu cầu quyền truy cập sử dụng. Bạn có thể bật tính năng này trong cài đặt hệ thống</string>
+    <string name="let_start">Hãy Bắt đầu</string>
+    <string name="style_lock">Chủ đề</string>
+    <string name="night_mode">Chế độ tối</string>
+    <string name="wallpaper_lock">Hình nền khóa</string>
+    <string name="change_pass">Đổi mật khẩu</string>
+    <string name="privacy_policy">Chính sách bảo mật</string>
+    <string name="change_language">Đổi ngôn ngữ</string>
+    <string name="share_app">Chia sẻ app</string>
+    <string name="rate_app">Đánh giá app</string>
+    <string name="lock_style">Chủ đề</string>
+    <string name="lock_all">Khóa tất cả</string>
+    <string name="detail_lock_all">Chạm để khóa tất cả ứng dụng</string>
+    <string name="un_lock_all">Mở khóa tất cả</string>
+    <string name="detail_unlock_all">Chạm để mở khóa tất cả ứng dụng</string>
+    <string name="new_profile">Thêm cấu hình mới</string>
+    <string name="status_first_step_pattern">Vẽ một hình khóa</string>
+    <string name="status_next_step_pattern">Vẽ lại hình khóa để xác nhận</string>
+    <string name="status_pattern_correct">Xác thực hình khóa</string>
+    <string name="status_pattern_incorrect">Xin vui lòng thử lại</string>
+    <string name="schema_failed_pattern">Cần kết nối ít nhất 4 điểm</string>
+    <string name="status_first_step_pin">Nhập mã pin của bạn</string>
+    <string name="status_next_step_pin">Nhập lại mã pin để xác nhận</string>
+    <string name="status_pin_correct">Xác thực mã pin</string>
+    <string name="status_pin_incorrect">Xin vui lòng thử lại</string>
+    <string-array name="fragment_name">
+        <item>Ứng dụng</item>
+        <item>Cấu hình</item>
+    </string-array>
+</resources>

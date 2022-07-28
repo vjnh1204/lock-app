@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="16dp"
-            android:text="Khóa Ứng dụng"
+            android:text="@string/app_lock"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold" />

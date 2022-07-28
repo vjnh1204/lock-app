@@ -43,36 +43,36 @@ class PatternLockActivity : AppCompatActivity() {
                     password+=id.toString()
                 }
                 if(password.length<4){
-                    statusPassword?.text= PassPattern.SCHEMA_FAILED
+                    statusPassword?.text= resources.getString(R.string.schema_failed_pattern)
                     return false
                 }
                 if(PassPattern.getPassword() == null){
                     if(PassPattern.isFirstStep()){
                         userPassword= password
                         PassPattern.setFistStep(false)
-                        statusPassword?.text = PassPattern.STATUS_NEXT_STEP
+                        statusPassword?.text = resources.getString(R.string.status_next_step_pattern)
                         stepView?.go(1,true)
                     }
                     else{
                         if(userPassword.equals(password)){
                             PassPattern.setPassword(userPassword!!)
-                            statusPassword?.text= PassPattern.STATUS_PASSWORD_CORRECT
+                            statusPassword?.text= resources.getString(R.string.status_pattern_correct)
                             stepView?.done(true)
                             startFirst()
                         }
                         else{
-                            statusPassword?.text= PassPattern.STATUS_PASSWORD_INCORRECT
+                            statusPassword?.text= resources.getString(R.string.status_pattern_incorrect)
                             return false
                         }
                     }
                 }
                 else{
                     if (PassPattern.isCorrect(password)){
-                        statusPassword?.text= PassPattern.STATUS_PASSWORD_CORRECT
+                        statusPassword?.text= resources.getString(R.string.status_pattern_correct)
                         startMain()
                     }
                     else{
-                        statusPassword?.text= PassPattern.STATUS_PASSWORD_INCORRECT
+                        statusPassword?.text= resources.getString(R.string.status_pattern_incorrect)
                         return false
                     }
                 }
@@ -96,8 +96,7 @@ class PatternLockActivity : AppCompatActivity() {
         stepView = findViewById(R.id.step_view)
         statusPassword = findViewById(R.id.status_password)
         linearLayout = findViewById(R.id.ll_action_bar1)
-        statusPassword?.text= PassPattern.STATUS_FIST_STEP
-
+        statusPassword?.text= resources.getString(R.string.status_first_step_pattern)
         if(PassPattern.getPassword() == null ){
             linearLayout?.visibility= View.GONE
             stepView?.visibility = View.VISIBLE
@@ -114,7 +113,7 @@ class PatternLockActivity : AppCompatActivity() {
         if(PassPattern.getPassword() == null && !PassPattern.isFirstStep()){
             stepView?.go(0,true)
             PassPattern.setFistStep(true)
-            statusPassword?.text = PassPattern.STATUS_FIST_STEP
+            statusPassword?.text = resources.getString(R.string.status_first_step_pattern)
         }
         else{
             startCurrentHomePackage()

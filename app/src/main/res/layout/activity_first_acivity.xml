@@ -14,11 +14,12 @@
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:text="Khóa Ứng dụng"
+                android:text="@string/app_lock"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -45,7 +46,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bước một"
+                    android:text="@string/first_step"
                     android:textAllCaps="true"
                     android:textStyle="bold"
                     android:textSize="24sp"
@@ -53,7 +54,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tạo mật khẩu để nhập khi mở các ứng dụng bị khóa"
+                    android:text="@string/detail_first_step"
                     android:layout_marginTop="9dp"
                     android:textSize="16sp"/>
                 <LinearLayout
@@ -65,7 +66,7 @@
                         android:id="@+id/btn_createPass"
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
-                        android:text="Tạo mật khẩu"
+                        android:text="@string/create_pass"
                         android:backgroundTint="@color/colorButton"/>
                     <ImageView
                         android:id="@+id/image_done_createPass"
@@ -91,7 +92,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bước hai"
+                    android:text="@string/second_step"
                     android:textAllCaps="true"
                     android:textStyle="bold"
                     android:textSize="24sp"
@@ -99,7 +100,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Khóa ứng dụng yêu cầu quyền truy cập sử dụng. Bạn có thể bật tính năng này trong cài đặt hệ thống"
+                    android:text="@string/detail_second_step"
                     android:layout_marginTop="9dp"
                     android:textSize="16sp"/>
                 <LinearLayout
@@ -111,7 +112,7 @@
                         android:id="@+id/btn_setting_permission"
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
-                        android:text="Đi đến cài đặt"
+                        android:text="@string/go_setting"
                         android:backgroundTint="@color/colorButton"/>
                     <ImageView
                         android:id="@+id/image_setting_permission"
@@ -139,7 +140,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bước ba"
+                    android:text="@string/third_step"
                     android:textAllCaps="true"
                     android:textStyle="bold"
                     android:textSize="24sp"
@@ -147,7 +148,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Khóa ứng dụng yêu cầu quyền truy cập sử dụng. Bạn có thể bật tính năng này trong cài đặt hệ thống"
+                    android:text="@string/detail_third_step"
                     android:layout_marginTop="9dp"
                     android:textSize="16sp"/>
                 <LinearLayout
@@ -159,7 +160,7 @@
                         android:id="@+id/btn_orverlay_permission"
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
-                        android:text="Đi đến cài đặt"
+                        android:text="@string/go_setting"
                         android:backgroundTint="@color/colorButton"/>
                     <ImageView
                         android:id="@+id/image_overlay_permission"
@@ -183,5 +184,5 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="5dp"
         android:backgroundTint="@color/colorButton"
-        android:text="Hãy Bắt đầu" />
+        android:text="@string/let_start" />
 </RelativeLayout>

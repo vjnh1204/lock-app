@@ -17,7 +17,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 class MainActivity : FragmentActivity() {
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager2
-    private var tabTitle = arrayOf("Applications","Profiles")
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var imgMenu:ImageView
     private lateinit var changePassCardView:CardView
@@ -29,6 +28,7 @@ class MainActivity : FragmentActivity() {
         viewPager = findViewById(R.id.viewPager2)
         drawerLayout = findViewById(R.id.drawer_layout)
         imgMenu = findViewById(R.id.image_menu)
+        var tabTitle = resources.getStringArray(R.array.fragment_name)
         viewPager.adapter = FragmentAdapter(this)
         TabLayoutMediator(tabLayout,viewPager){tab,index ->
             tab.text = tabTitle[index]

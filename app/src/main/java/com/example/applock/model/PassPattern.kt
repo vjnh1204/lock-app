@@ -5,11 +5,6 @@ import io.paperdb.Paper
 object PassPattern {
 
         private const val PASSWORD_KEY = "PASSWORD_KEY"
-        const val STATUS_FIST_STEP = "Draw an unlock pattern"
-        const val STATUS_NEXT_STEP = "Draw pattern again to confirm"
-        const val STATUS_PASSWORD_CORRECT= "Pattern set"
-        const val STATUS_PASSWORD_INCORRECT= "Please try again"
-        const val SCHEMA_FAILED = "Connect at least 4 dots"
         private var isFirstStep:Boolean = true
         private var isFirstStepChange:Boolean= true
         fun setPassword(password: String){

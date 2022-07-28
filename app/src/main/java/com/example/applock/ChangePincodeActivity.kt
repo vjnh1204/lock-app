@@ -32,18 +32,18 @@ class ChangePincodeActivity : AppCompatActivity() {
                 if (PassPin.isFirstStepChange()) {
                     userPin = pin
                     PassPin.setFirstStepChange(false)
-                    statusPin?.text = PassPin.STATUS_NEXT_STEP
+                    statusPin?.text = resources.getString(R.string.status_next_step_pin)
                     stepView?.go(1, true)
                     pinLockView.resetPinLockView()
                 } else {
                     if (userPin.equals(pin, true)) {
 
                         PassPin.changePin(userPin!!)
-                        statusPin?.text = PassPin.STATUS_PIN_CORRECT
+                        statusPin?.text = resources.getString(R.string.status_pin_correct)
                         stepView?.done(true)
                         startMain()
                     } else {
-                        statusPin?.text = PassPin.STATUS_PIN_INCORRECT
+                        statusPin?.text = resources.getString(R.string.status_pin_incorrect)
                         pinLockView.resetPinLockView()
                     }
                 }
@@ -74,7 +74,7 @@ class ChangePincodeActivity : AppCompatActivity() {
         statusPin = findViewById(R.id.status_pin)
 
         stepView?.visibility = View.VISIBLE
-        statusPin?.text = PassPin.STATUS_FIST_STEP
+        statusPin?.text = resources.getString(R.string.status_first_step_pin)
         stepView?.setStepsNumber(2)
         stepView?.go(0, true)
 
@@ -85,7 +85,7 @@ class ChangePincodeActivity : AppCompatActivity() {
         if (!PassPin.isFirstStepChange()) {
             stepView?.go(0, true)
             PassPin.setFirstStepChange(true)
-            statusPin?.text = PassPin.STATUS_FIST_STEP
+            statusPin?.text = resources.getString(R.string.status_first_step_pin)
         } else {
             finish()
             super.onBackPressed()

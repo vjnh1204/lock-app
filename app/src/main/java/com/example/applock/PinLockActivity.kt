@@ -27,10 +27,10 @@ class PinLockActivity : AppCompatActivity() {
             override fun onComplete(pin: String?) {
 
                 if (PassPin.isCorrect(pin!!)) {
-                    statusPin?.text = PassPin.STATUS_PIN_CORRECT
+                    statusPin?.text = resources.getString(R.string.status_pin_correct)
                     startMain()
                 } else {
-                    statusPin?.text = PassPin.STATUS_PIN_INCORRECT
+                    statusPin?.text = resources.getString(R.string.status_pattern_incorrect)
                 }
 
             }
@@ -50,6 +50,7 @@ class PinLockActivity : AppCompatActivity() {
 
     private fun initLayout() {
         statusPin = findViewById(R.id.status_pin)
+        statusPin?.text = resources.getString(R.string.status_first_step_pin)
     }
 
     fun startMain() {

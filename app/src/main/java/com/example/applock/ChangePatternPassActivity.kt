@@ -30,24 +30,24 @@ class ChangePatternPassActivity : AppCompatActivity() {
                     password+=id.toString()
                 }
                 if(password.length<4){
-                    statusPassword?.text = PassPattern.SCHEMA_FAILED
+                    statusPassword?.text = resources.getString(R.string.schema_failed_pattern)
                     return false
                 }
                 if(PassPattern.isFirstStepChange()){
                     userPassword = password
                     PassPattern.setFirstStepChange(false)
-                    statusPassword?.text = PassPattern.STATUS_NEXT_STEP
+                    statusPassword?.text = resources.getString(R.string.status_next_step_pattern)
                     stepView?.go(1,true)
                 }
                 else{
                     if(userPassword.equals(password)){
                         PassPattern.changePass(userPassword!!)
-                        statusPassword?.text = PassPattern.STATUS_PASSWORD_CORRECT
+                        statusPassword?.text = resources.getString(R.string.status_pattern_correct)
                         stepView?.done(true)
                         startMain()
                     }
                     else{
-                        statusPassword?.text = PassPattern.STATUS_PASSWORD_INCORRECT
+                        statusPassword?.text = resources.getString(R.string.status_pattern_incorrect)
                         return false
                     }
                 }
@@ -64,7 +64,7 @@ class ChangePatternPassActivity : AppCompatActivity() {
     private fun initLayout(){
         stepView= findViewById(R.id.step_view_change)
         statusPassword = findViewById(R.id.status_password_change)
-        statusPassword?.text = PassPattern.STATUS_FIST_STEP
+        statusPassword?.text = resources.getString(R.string.status_first_step_pattern)
 
         stepView?.setStepsNumber(2)
         stepView?.go(0,true)
@@ -74,7 +74,7 @@ class ChangePatternPassActivity : AppCompatActivity() {
         if(!PassPattern.isFirstStepChange()){
             PassPattern.setFirstStepChange(true)
             stepView?.go(0,true)
-            statusPassword?.text = PassPattern.STATUS_FIST_STEP
+            statusPassword?.text = resources.getString(R.string.status_first_step_pattern)
         }
         else{
             finish()
