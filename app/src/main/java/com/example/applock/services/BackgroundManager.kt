@@ -10,7 +10,7 @@ import android.os.Build
 import com.example.applock.receiver.RestartServiceWhenStopped
 
 class BackgroundManager {
-    private var context:Context?= null
+    private var context: Context?= null
     companion object{
         private const val period = 5000
         private const val ALARM_ID = 159784
@@ -60,7 +60,7 @@ class BackgroundManager {
     fun startAlarmManager(){
         val intent = Intent(context, RestartServiceWhenStopped::class.java)
         intent.putExtra("type","startLockServiceFromAM")
-        var pendingIntent =
+        val pendingIntent =
             PendingIntent.getBroadcast(context, ALARM_ID,intent, PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
         val alarmManager = context?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         alarmManager.setExact(AlarmManager.RTC_WAKEUP,System.currentTimeMillis() + period,pendingIntent)

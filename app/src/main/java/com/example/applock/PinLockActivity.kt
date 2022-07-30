@@ -1,6 +1,7 @@
 package com.example.applock
 
 import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import com.andrognito.pinlockview.IndicatorDots
 import com.andrognito.pinlockview.PinLockListener
 import com.andrognito.pinlockview.PinLockView
 import com.example.applock.model.PassPin
+import com.example.applock.utils.LocaleManager
 import com.example.applock.utils.Utils
 
 class PinLockActivity : AppCompatActivity() {
@@ -31,6 +33,7 @@ class PinLockActivity : AppCompatActivity() {
                     startMain()
                 } else {
                     statusPin?.text = resources.getString(R.string.status_pattern_incorrect)
+                    pinLockView.resetPinLockView()
                 }
 
             }
@@ -76,5 +79,8 @@ class PinLockActivity : AppCompatActivity() {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
         Utils(this).clearLastApp()
+    }
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(LocaleManager.setLocale(newBase!!))
     }
 }

@@ -3,6 +3,8 @@
 package com.example.applock.fragment
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +14,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.applock.R
 import com.example.applock.adapters.AppsInstallerAdapter
+import com.example.applock.model.AppInfo
 import com.example.applock.utils.Constant
+import com.example.applock.utils.LocaleManager
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class ApplicationsFragment : Fragment() {
     private lateinit var recyclerView:RecyclerView
@@ -33,5 +40,6 @@ class ApplicationsFragment : Fragment() {
         recyclerView.adapter = adapter
         adapter!!.notifyDataSetChanged()
     }
+
 }
 

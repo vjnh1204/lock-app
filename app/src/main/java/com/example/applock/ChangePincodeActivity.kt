@@ -1,5 +1,6 @@
 package com.example.applock
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,7 @@ import com.andrognito.pinlockview.IndicatorDots
 import com.andrognito.pinlockview.PinLockListener
 import com.andrognito.pinlockview.PinLockView
 import com.example.applock.model.PassPin
+import com.example.applock.utils.LocaleManager
 import com.shuhart.stepview.StepView
 
 class ChangePincodeActivity : AppCompatActivity() {
@@ -90,5 +92,8 @@ class ChangePincodeActivity : AppCompatActivity() {
             finish()
             super.onBackPressed()
         }
+    }
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(LocaleManager.setLocale(newBase!!))
     }
 }

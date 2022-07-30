@@ -1,11 +1,13 @@
 package com.example.applock
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
 import com.example.applock.model.PassPattern
+import com.example.applock.utils.LocaleManager
 import com.itsxtt.patternlock.PatternLockView
 import com.shuhart.stepview.StepView
 import java.util.ArrayList
@@ -81,5 +83,9 @@ class ChangePatternPassActivity : AppCompatActivity() {
             super.onBackPressed()
         }
 
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(LocaleManager.setLocale(newBase!!))
     }
 }

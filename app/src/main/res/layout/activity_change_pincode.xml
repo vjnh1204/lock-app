@@ -41,6 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="20dp"
+            android:layout_marginBottom="10dp"
             android:textColor="@color/white"
             android:textSize="20sp"
             tools:text="Hello" />
@@ -62,8 +63,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:keypadTextColor="#E6E6E6"
+                app:keypadTextSize="30dp"
                 app:keypadVerticalSpacing="36dp"
-                app:keypadDeleteButtonSize="60dp"
+                app:keypadDeleteButtonSize="50dp"
                 />
         </LinearLayout>
     </LinearLayout>

@@ -1,6 +1,7 @@
 package com.example.applock
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,8 +12,11 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.example.applock.adapters.FragmentAdapter
+import com.example.applock.utils.LocaleManager
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MainActivity : FragmentActivity() {
     private lateinit var tabLayout: TabLayout
@@ -21,6 +25,7 @@ class MainActivity : FragmentActivity() {
     private lateinit var imgMenu:ImageView
     private lateinit var changePassCardView:CardView
     private lateinit var changeStyleCardView:CardView
+    private lateinit var changeLanguageCardView: CardView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -38,12 +43,15 @@ class MainActivity : FragmentActivity() {
         }
         changePassCardView = findViewById(R.id.change_pass)
         changePassCardView.setOnClickListener {
-            if (App.instance?.getLockStyle().equals("pattern")){
-                startActivity(Intent(this,ChangePatternPassActivity::class.java))
+            GlobalScope.launch {
+                if (App.instance?.getLockStyle().equals("pattern")){
+                    startActivity(Intent(this@MainActivity,ChangePatternPassActivity::class.java))
+                }
+                else if(App.instance?.getLockStyle().equals("pin")){
+                    startActivity(Intent(this@MainActivity,ChangePincodeActivity::class.java))
+                }
             }
-            else if(App.instance?.getLockStyle().equals("pin")){
-                startActivity(Intent(this,ChangePincodeActivity::class.java))
-            }
+
         }
         changeStyleCardView = findViewById(R.id.change_lock_view)
         changeStyleCardView.setOnClickListener {
@@ -73,6 +81,16 @@ class MainActivity : FragmentActivity() {
             }
             dialog.show()
         }
-    }
+        changeLanguageCardView = findViewById(R.id.change_language)
+        changeLanguageCardView.setOnClickListener {
+            GlobalScope.launch {
+                startActivity(Intent(this@MainActivity,LanguagesActivity::class.java))
+                finish()
+            }
 
+        }
+    }
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(LocaleManager.setLocale(newBase!!))
+    }
 }

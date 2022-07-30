@@ -29,11 +29,20 @@ class App: Application() {
         val pref = getSharedPreferences(PREFS,Context.MODE_PRIVATE)
         return pref.getString(LOCK_STYLE,"pattern")
     }
-
+    fun setLocale(locale:String){
+        val pref = getSharedPreferences(PREFS,Context.MODE_PRIVATE).edit()
+        pref.putString(LOCALE,locale)
+        pref.apply()
+    }
+    fun getLocale():String?{
+        val pref = getSharedPreferences(PREFS,Context.MODE_PRIVATE)
+        return pref.getString(LOCALE,"en")
+    }
     companion object{
         var instance: App? = null
         const val PREFS: String = "SHARED_PREFS"
         const val HAVE_PASSWORD: String = "HAVE_PASSWORD"
         const val LOCK_STYLE:String ="LOCK_STYLE"
+        const val LOCALE:String ="LOCALE"
     }
 }

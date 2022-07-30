@@ -34,6 +34,8 @@
     <string name="status_next_step_pin">Nhập lại mã pin để xác nhận</string>
     <string name="status_pin_correct">Xác thực mã pin</string>
     <string name="status_pin_incorrect">Xin vui lòng thử lại</string>
+    <string name="vietnamese">Tiếng Việt</string>
+    <string name="english">Tiếng Anh</string>
     <string-array name="fragment_name">
         <item>Ứng dụng</item>
         <item>Cấu hình</item>

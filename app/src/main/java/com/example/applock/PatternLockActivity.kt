@@ -3,6 +3,7 @@ package com.example.applock
 
 import android.app.Activity
 import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
@@ -12,9 +13,11 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.applock.model.PassPattern
 import com.example.applock.services.BackgroundManager
+import com.example.applock.utils.LocaleManager
 import com.example.applock.utils.Utils
 import com.itsxtt.patternlock.PatternLockView
 import com.shuhart.stepview.StepView
+import kotlinx.coroutines.*
 import java.util.ArrayList
 
 
@@ -38,59 +41,69 @@ class PatternLockActivity : AppCompatActivity() {
         val patternLockView: PatternLockView = findViewById(R.id.pattern_view)
         patternLockView.setOnPatternListener(object :PatternLockView.OnPatternListener {
             override fun onComplete(ids: ArrayList<Int>): Boolean {
-                var password = ""
-                for(id in ids){
-                    password+=id.toString()
-                }
-                if(password.length<4){
-                    statusPassword?.text= resources.getString(R.string.schema_failed_pattern)
-                    return false
-                }
-                if(PassPattern.getPassword() == null){
-                    if(PassPattern.isFirstStep()){
-                        userPassword= password
-                        PassPattern.setFistStep(false)
-                        statusPassword?.text = resources.getString(R.string.status_next_step_pattern)
-                        stepView?.go(1,true)
+
+
+                    var password = ""
+                    for(id in ids){
+                        password+=id.toString()
+                    }
+                    if(password.length<4){
+                            statusPassword?.text= resources.getString(R.string.schema_failed_pattern)
+                            return false
+                    }
+                    if(PassPattern.getPassword() == null){
+                        if(PassPattern.isFirstStep()){
+                            userPassword= password
+                            PassPattern.setFistStep(false)
+                            statusPassword?.text = resources.getString(R.string.status_next_step_pattern)
+                            stepView?.go(1,true)
+                        }
+                        else{
+                            if(userPassword.equals(password)){
+                                PassPattern.setPassword(userPassword!!)
+                                statusPassword?.text= resources.getString(R.string.status_pattern_correct)
+                                stepView?.done(true)
+                                startFirst()
+                            }
+                            else{
+                                statusPassword?.text= resources.getString(R.string.status_pattern_incorrect)
+                                return false
+                            }
+                        }
                     }
                     else{
-                        if(userPassword.equals(password)){
-                            PassPattern.setPassword(userPassword!!)
+                        if (PassPattern.isCorrect(password)){
                             statusPassword?.text= resources.getString(R.string.status_pattern_correct)
-                            stepView?.done(true)
-                            startFirst()
+                            startMain()
                         }
                         else{
                             statusPassword?.text= resources.getString(R.string.status_pattern_incorrect)
                             return false
                         }
                     }
-                }
-                else{
-                    if (PassPattern.isCorrect(password)){
-                        statusPassword?.text= resources.getString(R.string.status_pattern_correct)
-                        startMain()
-                    }
-                    else{
-                        statusPassword?.text= resources.getString(R.string.status_pattern_incorrect)
-                        return false
-                    }
-                }
-                return true
+                    return true
+
+
             }
         })
     }
     private fun startFirst(){
-        val intent = Intent()
-        App.instance!!.setHaveCode("Y")
-        setResult(Activity.RESULT_OK,intent)
-        finish()
+        GlobalScope.launch {
+            val intent = Intent()
+            App.instance!!.setHaveCode("Y")
+            setResult(Activity.RESULT_OK,intent)
+            finish()
+        }
+
     }
     private fun startMain(){
-        if(intent.getStringExtra("broadcast_receiver") == null){
-            startActivity(Intent(this,MainActivity::class.java))
+        GlobalScope.launch {
+            if(intent.getStringExtra("broadcast_receiver") == null){
+                startActivity(Intent(this@PatternLockActivity,MainActivity::class.java))
+            }
+            finish()
         }
-        finish()
+
     }
     private fun initLayout(){
         stepView = findViewById(R.id.step_view)
@@ -116,8 +129,10 @@ class PatternLockActivity : AppCompatActivity() {
             statusPassword?.text = resources.getString(R.string.status_first_step_pattern)
         }
         else{
-            startCurrentHomePackage()
-            finish()
+            GlobalScope.launch {
+                startCurrentHomePackage()
+                finish()
+            }
             super.onBackPressed()
         }
     }
@@ -131,5 +146,8 @@ class PatternLockActivity : AppCompatActivity() {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
         Utils(this).clearLastApp()
+    }
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(LocaleManager.setLocale(newBase!!))
     }
 }

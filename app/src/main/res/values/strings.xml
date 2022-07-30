@@ -33,6 +33,8 @@
     <string name="status_next_step_pin">Enter your pin again to confirm</string>
     <string name="status_pin_correct">Pin set</string>
     <string name="status_pin_incorrect">Please try again</string>
+    <string name="vietnamese">Vietnamese</string>
+    <string name="english">English</string>
     <string-array name="fragment_name">
         <item>Applications</item>
         <item>Profiles</item>

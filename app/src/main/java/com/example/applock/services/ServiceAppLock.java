@@ -33,7 +33,6 @@ public class ServiceAppLock extends IntentService {
             createNotification();
         }
     }
-
     private void runAppLock(){
         long endTime = System.currentTimeMillis()+210;
         while (System.currentTimeMillis()<endTime){

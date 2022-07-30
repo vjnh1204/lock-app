@@ -11,6 +11,8 @@ import com.example.applock.R
 import com.example.applock.interfaces.AppOnClickListener
 import com.example.applock.model.AppInfo
 import com.example.applock.utils.Utils
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class AppsInstallerAdapter(
     private val items:ArrayList<AppInfo>, private val mContext: Context,
@@ -42,12 +44,15 @@ class AppsInstallerAdapter(
         holder.tvAppName.text= item.appName
         holder.ivAppIcon.setImageDrawable(item.iconApp)
         val pk = item.packageName
-        if (utils.isLock(pk)){
-            holder.ivAppLock.setImageResource(R.drawable.lock)
-        }
-        else{
-            holder.ivAppLock.setImageResource(R.drawable.unlock)
-        }
+
+            if (utils.isLock(pk)){
+                holder.ivAppLock.setImageResource(R.drawable.lock)
+            }
+            else{
+                holder.ivAppLock.setImageResource(R.drawable.unlock)
+            }
+
+
         holder.setListener(object : AppOnClickListener{
             override fun selectApp(position: Int) {
                 if (utils.isLock(pk)){

@@ -57,7 +57,7 @@ public class ServiceAppLockJObIntent extends JobIntentService {
                 .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)
                 .setContentIntent(pendingIntent);
         startForeground(NOTIF_ID,mBuilder.build());
-        BackgroundManager.Companion.getInstance().init(this).startService();
+//        BackgroundManager.getInstance().init(this).startService();
     }
     private void cancelNotification(){
         NotificationManager manager= (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
