@@ -64,13 +64,15 @@
                     android:layout_marginTop="16dp">
                     <Button
                         android:id="@+id/btn_createPass"
-                        android:layout_width="250dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="6"
                         android:layout_height="wrap_content"
                         android:text="@string/create_pass"
                         android:backgroundTint="@color/colorButton"/>
                     <ImageView
                         android:id="@+id/image_done_createPass"
-                        android:layout_width="40dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="40dp"
                         android:src="@drawable/tick_done"
                         android:layout_gravity="center"
@@ -110,13 +112,15 @@
                     android:layout_marginTop="16dp">
                     <Button
                         android:id="@+id/btn_setting_permission"
-                        android:layout_width="250dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="6"
                         android:layout_height="wrap_content"
                         android:text="@string/go_setting"
                         android:backgroundTint="@color/colorButton"/>
                     <ImageView
                         android:id="@+id/image_setting_permission"
-                        android:layout_width="40dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="40dp"
                         android:src="@drawable/tick_done"
                         android:layout_gravity="center"
@@ -158,13 +162,15 @@
                     android:layout_marginTop="16dp">
                     <Button
                         android:id="@+id/btn_orverlay_permission"
-                        android:layout_width="250dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="6"
                         android:layout_height="wrap_content"
                         android:text="@string/go_setting"
                         android:backgroundTint="@color/colorButton"/>
                     <ImageView
                         android:id="@+id/image_overlay_permission"
-                        android:layout_width="40dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="40dp"
                         android:src="@drawable/tick_done"
                         android:layout_gravity="center"

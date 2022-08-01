@@ -1,13 +1,16 @@
 package com.example.applock.fragment
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.cardview.widget.CardView
 import com.example.applock.App
+import com.example.applock.FavoriteActivity
 import com.example.applock.R
 import com.example.applock.utils.Constant
 import com.example.applock.utils.Utils
@@ -25,6 +28,10 @@ class ProfilesFragment : Fragment() {
         val unLockAllCardView:CardView = view.findViewById(R.id.open_all)
         unLockAllCardView.setOnClickListener {
             dialogUnLock()
+        }
+        val btnCreateProfile:Button = view.findViewById(R.id.btn_createProfile)
+        btnCreateProfile.setOnClickListener {
+            startActivity(Intent(activity,FavoriteActivity::class.java))
         }
         return view
     }

@@ -1,6 +1,8 @@
 package com.example.applock.model
 
 import io.paperdb.Paper
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 object PassPattern {
 
@@ -8,7 +10,10 @@ object PassPattern {
         private var isFirstStep:Boolean = true
         private var isFirstStepChange:Boolean= true
         fun setPassword(password: String){
-            Paper.book().write(PASSWORD_KEY,password)
+            GlobalScope.launch {
+                Paper.book().write(PASSWORD_KEY,password)
+            }
+
         }
         fun getPassword():String?{
             return Paper.book().read(PASSWORD_KEY)
@@ -29,7 +34,10 @@ object PassPattern {
             isFirstStepChange= firstStepChange
         }
         fun changePass(password: String){
-            Paper.book().delete(PASSWORD_KEY)
-            Paper.book().write(PASSWORD_KEY,password)
+            GlobalScope.launch {
+                Paper.book().delete(PASSWORD_KEY)
+                Paper.book().write(PASSWORD_KEY,password)
+            }
+
         }
 }

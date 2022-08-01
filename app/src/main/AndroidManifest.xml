@@ -29,6 +29,9 @@
         android:theme="@style/Theme.AppLock"
         tools:targetApi="31">
         <activity
+            android:name=".FavoriteActivity"
+            android:exported="false" />
+        <activity
             android:name=".LanguagesActivity"
             android:exported="false" />
         <activity

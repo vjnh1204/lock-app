@@ -33,7 +33,7 @@
             android:layout_width="72dp"
             android:layout_height="72dp"
             android:layout_margin="16dp"
-            android:src="@drawable/lock"
+            android:src="@drawable/cyber_security"
             app:tint="@color/white" />
 
         <TextView

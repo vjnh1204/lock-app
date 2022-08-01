@@ -35,7 +35,7 @@
             android:layout_width="72dp"
             android:layout_height="72dp"
             android:layout_margin="16dp"
-            android:src="@drawable/lock"
+            android:src="@drawable/cyber_security"
             app:tint="@color/white" />
 
         <TextView
@@ -65,6 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:keypadTextColor="#E6E6E6"
+                app:keypadButtonBackgroundDrawable="@drawable/bg_pin_pad"
                 app:keypadTextSize="30dp"
                 app:keypadVerticalSpacing="36dp"
                 app:keypadDeleteButtonSize="50dp"

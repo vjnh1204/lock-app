@@ -33,8 +33,7 @@ class ReceiverAppLock : BroadcastReceiver() {
                     context.startActivity(i)
                     Log.d("AAA","Start Activity")
                 }
-            BackgroundManager.getInstance()!!.init(context).startService()
-            BackgroundManager.getInstance()!!.init(context).startAlarmManager()
+//
         }
     }
 }

@@ -1,6 +1,8 @@
 package com.example.applock.model
 
 import io.paperdb.Paper
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 object PassPin {
     private const val PIN_KEY = "PIN_KEY"
@@ -18,7 +20,10 @@ object PassPin {
         isFirstStepChange= firstStepChange
     }
     fun changePin(pin: String){
-        Paper.book().delete(PIN_KEY)
-        Paper.book().write(PIN_KEY,pin)
+        GlobalScope.launch {
+            Paper.book().delete(PIN_KEY)
+            Paper.book().write(PIN_KEY,pin)
+        }
+
     }
 }
