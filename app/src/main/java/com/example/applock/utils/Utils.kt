@@ -36,6 +36,18 @@ class Utils(context: Context) {
     fun clearLastApp(){
         Paper.book().delete(EXTRA_LAST_APP)
     }
+    fun isFavorite(packageName: String):Boolean{
+        return Paper.book("Favorite").read<String>(packageName)!= null
+    }
+    fun favorite(pk:String){
+        Paper.book("Favorite").write(pk,pk)
+    }
+    fun unFavorite(pk: String){
+        Paper.book("Favorite").delete(pk)
+    }
+    fun reset(){
+        Paper.book("Favorite").destroy()
+    }
     companion object{
         private var EXTRA_LAST_APP = "EXTRA_LAST_APP"
         @Suppress("DEPRECATION")

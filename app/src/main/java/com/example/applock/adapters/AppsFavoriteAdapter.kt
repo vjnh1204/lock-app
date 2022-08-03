@@ -9,28 +9,23 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.applock.R
+import com.example.applock.adapters.AppsFavoriteAdapter.ViewHolder
 import com.example.applock.interfaces.AppOnClickListener
 import com.example.applock.model.AppInfo
 import com.example.applock.utils.Utils
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
-class AppsInstallerAdapter(
-    private val items:ArrayList<AppInfo>, private val mContext: Context,
-    private val utils: Utils= Utils(mContext)
-        ) : RecyclerView.Adapter<AppsInstallerAdapter.ViewHolder>() {
-    inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        //Holder view
-
-        val ivAppIcon:ImageView = view.findViewById(R.id.iv_icon_app)
-        val tvAppName:TextView = view.findViewById(R.id.tv_app_name)
-        val ivAppLock:ImageView = view.findViewById(R.id.iv_lock_app)
+class AppsFavoriteAdapter(private val items:ArrayList<AppInfo>,
+                          private val mContext: Context, private val utils: Utils =Utils(mContext)) : RecyclerView.Adapter<ViewHolder>() {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val imageView:ImageView = itemView.findViewById(R.id.iv_icon_app)
+        val textView:TextView = itemView.findViewById(R.id.tv_app_name)
+        val ivAppLock:ImageView = itemView.findViewById(R.id.iv_lock_app)
         init {
-            view.setOnClickListener {
+            itemView.setOnClickListener{
                 listener?.selectApp(adapterPosition)
             }
         }
-        private var listener:AppOnClickListener?= null
+        private var listener: AppOnClickListener? = null
         fun setListener(listener: AppOnClickListener){
             this.listener = listener
         }
@@ -42,28 +37,27 @@ class AppsInstallerAdapter(
 
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        utils.reset()
         val item = items[position]
-        holder.tvAppName.text= item.appName
-        holder.ivAppIcon.setImageDrawable(mContext.packageManager.getApplicationIcon(item.packageName))
+        holder.imageView.setImageDrawable(mContext.packageManager.getApplicationIcon(item.packageName))
+        holder.textView.text = item.appName
         val pk = item.packageName
+        if(utils.isFavorite(pk)){
+            holder.ivAppLock.setImageResource(R.drawable.lock)
+        }
+        else{
+            holder.ivAppLock.setImageResource(R.drawable.unlock)
+        }
 
-            if (utils.isLock(pk)){
-                holder.ivAppLock.setImageResource(R.drawable.lock)
-            }
-            else{
-                holder.ivAppLock.setImageResource(R.drawable.unlock)
-            }
-
-
-        holder.setListener(object : AppOnClickListener{
+        holder.setListener(object :AppOnClickListener{
             override fun selectApp(position: Int) {
-                if (utils.isLock(pk)){
+                if (utils.isFavorite(pk)){
                     holder.ivAppLock.setImageResource(R.drawable.unlock)
-                    utils.unLock(pk)
+                    utils.unFavorite(pk)
                 }
                 else{
                     holder.ivAppLock.setImageResource(R.drawable.lock)
-                    utils.lock(pk)
+                    utils.favorite(pk)
                 }
             }
         })
@@ -72,4 +66,5 @@ class AppsInstallerAdapter(
     override fun getItemCount(): Int {
         return items.size
     }
+
 }

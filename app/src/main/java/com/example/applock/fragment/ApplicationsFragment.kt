@@ -40,6 +40,5 @@ class ApplicationsFragment : Fragment() {
         recyclerView.adapter = adapter
         adapter!!.notifyDataSetChanged()
     }
-
 }
 

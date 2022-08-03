@@ -38,11 +38,21 @@ class App: Application() {
         val pref = getSharedPreferences(PREFS,Context.MODE_PRIVATE)
         return pref.getString(LOCALE,"en")
     }
+    fun setThemMode(theme:Int){
+        val pref= getSharedPreferences(PREFS,Context.MODE_PRIVATE).edit()
+        pref.putInt(THEME,theme)
+        pref.apply()
+    }
+    fun getThemeMode():Int{
+        val pref = getSharedPreferences(PREFS,Context.MODE_PRIVATE)
+        return pref.getInt(THEME,0)
+    }
     companion object{
         var instance: App? = null
         const val PREFS: String = "SHARED_PREFS"
         const val HAVE_PASSWORD: String = "HAVE_PASSWORD"
         const val LOCK_STYLE:String ="LOCK_STYLE"
         const val LOCALE:String ="LOCALE"
+        const val THEME:String = "THEME"
     }
 }
